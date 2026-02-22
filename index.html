@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>THE REAL CODER X</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+
+body{
+font-family:'Montserrat',sans-serif;
+background:
+linear-gradient(rgba(10,10,20,0.85),rgba(10,10,20,0.85)),
+url('https://images.unsplash.com/photo-1519389950473-47ba0277781c');
+background-size:cover;
+background-position:center;
+background-attachment:fixed;
+color:#f5f5f5;
+}
+
+/* BIG HEADER */
+header{
+text-align:center;
+padding:60px 20px;
+font-size:70px;
+font-weight:900;
+letter-spacing:4px;
+background:linear-gradient(90deg,#00c6ff,#0072ff);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+text-shadow:0 0 25px rgba(0,114,255,0.8);
+}
+
+/* NAVBAR */
+nav{
+text-align:center;
+padding:18px;
+background:rgba(255,255,255,0.05);
+backdrop-filter:blur(8px);
+}
+
+nav a{
+color:#ffffff;
+margin:20px;
+text-decoration:none;
+font-weight:600;
+transition:0.3s;
+}
+
+nav a:hover{
+color:#00c6ff;
+}
+
+/* SECTION DESIGN */
+section{
+padding:50px 30px;
+margin:30px;
+background:rgba(255,255,255,0.06);
+backdrop-filter:blur(10px);
+border-radius:18px;
+box-shadow:0 0 30px rgba(0,114,255,0.3);
+}
+
+/* BOX GRID */
+.box-container{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:25px;
+margin-top:30px;
+}
+
+.box{
+background:rgba(255,255,255,0.08);
+padding:20px;
+border-radius:12px;
+text-align:center;
+font-weight:500;
+box-shadow:0 0 15px rgba(0,198,255,0.4);
+transition:0.3s;
+}
+
+.box:hover{
+background:linear-gradient(90deg,#00c6ff,#0072ff);
+transform:translateY(-5px);
+}
+
+/* LOGIN BOX */
+.login-box{
+max-width:400px;
+margin:auto;
+}
+
+input,select{
+width:100%;
+padding:12px;
+margin:10px 0;
+border:none;
+border-radius:8px;
+background:rgba(255,255,255,0.1);
+color:white;
+}
+
+button{
+padding:12px;
+width:100%;
+border:none;
+border-radius:8px;
+background:linear-gradient(90deg,#00c6ff,#0072ff);
+color:white;
+font-weight:bold;
+cursor:pointer;
+transition:0.3s;
+}
+
+button:hover{
+transform:scale(1.05);
+}
+
+/* COURSE BOX */
+.course-box{
+border:1px solid rgba(255,255,255,0.3);
+padding:15px;
+margin:12px;
+border-radius:8px;
+cursor:pointer;
+transition:0.3s;
+}
+
+.course-box:hover{
+background:linear-gradient(90deg,#00c6ff,#0072ff);
+transform:scale(1.05);
+}
+
+/* SOCIAL */
+iframe{
+border-radius:15px;
+box-shadow:0 0 20px rgba(0,198,255,0.5);
+}
+
+.btn{
+display:inline-block;
+padding:12px 28px;
+background:linear-gradient(90deg,#00c6ff,#0072ff);
+color:white;
+text-decoration:none;
+border-radius:10px;
+margin:10px;
+transition:0.3s;
+}
+
+.btn:hover{
+transform:scale(1.05);
+}
+
+/* MODAL POPUP */
+.modal{
+display:none;
+position:fixed;
+top:0;left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.85);
+backdrop-filter:blur(10px);
+justify-content:center;
+align-items:center;
+z-index:9999;
+}
+
+.modal-content{
+background:rgba(255,255,255,0.05);
+padding:30px;
+border-radius:15px;
+max-width:700px;
+max-height:80%;
+overflow-y:auto;
+text-align:left;
+position:relative;
+box-shadow:0 0 30px rgba(0,198,255,0.5);
+}
+
+.close{
+position:absolute;
+top:15px;
+right:20px;
+font-size:28px;
+font-weight:bold;
+cursor:pointer;
+color:#fff;
+}
+
+.close:hover{
+color:#00c6ff;
+}
+
+/* FOOTER */
+footer{
+text-align:center;
+padding:25px;
+margin-top:40px;
+background:#0a0a15;
+color:#aaa;
+}
+</style>
+</head>
+
+<body>
+
+<header>THE REAL CODER X</header>
+
+<nav>
+<a href="#login">Login</a>
+<a href="#courses">Courses</a>
+<a href="#social">Social</a>
+<a href="#contact">Contact</a>
+<a href="#about">About</a>
+</nav>
+
+<section id="login">
+<h2>Login System</h2>
+<div class="login-box">
+
+<select id="gender">
+<option value="">Gender</option>
+<option>Male</option>
+<option>Female</option>
+</select>
+
+<select id="state">
+<option value="">Select State</option>
+<option>Uttar Pradesh</option>
+<option>Delhi</option>
+<option>Haryana</option>
+<option>Bihar</option>
+</select>
+
+<input type="email" id="email" placeholder="Enter Gmail">
+<button onclick="sendOTP()">Send OTP</button>
+
+<div id="otpBox" style="display:none;">
+<input type="text" id="otpInput" placeholder="Enter OTP">
+<input type="hidden" id="generatedOTP">
+<button onclick="verifyOTP()">Verify OTP</button>
+</div>
+
+</div>
+</section>
+
+<section id="courses" style="display:none;">
+<h2>Available Courses (Click to Learn)</h2>
+<div class="course-box" onclick="openModal('Excel')">Excel</div>
+<div class="course-box" onclick="openModal('Basic Computer')">Basic Computer</div>
+<div class="course-box" onclick="openModal('Advance Excel')">Advance Excel</div>
+<div class="course-box" onclick="openModal('SQL')">SQL</div>
+<div class="course-box" onclick="openModal('Python')">Python</div>
+<div class="course-box" onclick="openModal('HTML CSS JS')">HTML CSS JS</div>
+</section>
+
+<!-- MODAL POPUP -->
+<div class="modal" id="courseModal">
+<div class="modal-content" id="modalContent">
+<span class="close" onclick="closeModal()">&times;</span>
+<div id="courseText"></div>
+</div>
+</div>
+
+<section id="social">
+<h2>YouTube</h2>
+<iframe width="400" height="230"
+src="https://www.youtube.com/embed/WbVOmw3iOC8"
+allowfullscreen></iframe>
+
+<h2 style="margin-top:30px;">Instagram</h2>
+<a href="https://www.instagram.com/therealcoderx?igsh=MTFhbnZxNGY5ZWxsMw==" target="_blank" class="btn">
+Visit My Instagram
+</a>
+</section>
+
+<section id="contact">
+<h2>Contact</h2>
+<a href="mailto:teachfree5@gmail.com" class="btn">Send Email</a>
+<a href="https://wa.me/919717440035" target="_blank" class="btn">
+Chat on WhatsApp
+</a>
+</section>
+
+<section id="about">
+<h2>About Me</h2>
+<div class="box-container">
+<script>
+for(let i=1;i<=50;i++){
+document.write('<div class="box">I am a passionate technology expert building modern, secure and powerful digital solutions with creativity, dedication and professional excellence.</div>');
+}
+</script>
+</div>
+</section>
+
+<footer>
+© 2026 THE REAL CODER X | All Rights Reserved
+</footer>
+
+<script>
+function generateOTP(length = 6) {
+let digits = '0123456789';
+let otp = '';
+for (let i = 0; i < length; i++) {
+otp += digits[Math.floor(Math.random() * digits.length)];
+}
+return otp;
+}
+
+function sendOTP() {
+const userEmail = document.getElementById("email").value;
+if (!userEmail) { alert("Please enter Gmail"); return; }
+
+const otp = generateOTP();
+document.getElementById("generatedOTP").value = otp;
+
+alert("OTP Generated: " + otp);
+document.getElementById("otpBox").style.display = "block";
+}
+
+function verifyOTP() {
+const enteredOTP = document.getElementById("otpInput").value;
+const generatedOTP = document.getElementById("generatedOTP").value;
+
+if (enteredOTP === generatedOTP) {
+alert("OTP Verified Successfully!");
+document.getElementById("courses").style.display = "block";
+document.getElementById("otpBox").style.display = "none";
+} else {
+alert("Incorrect OTP. Try Again.");
+}
+}
+
+// COURSE MODAL DATA (40 lines each)
+const courseData = {
+"Excel":`1. Introduction to Excel
+2. Cells, Rows, Columns
+3. Formatting Cells
+4. Number Formats
+5. Conditional Formatting
+6. Sorting & Filtering
+7. Tables in Excel
+8. Charts: Column, Bar, Pie
+9. Line & Area Charts
+10. Pivot Tables Basics
+11. Creating Pivot Charts
+12. Slicers & Timelines
+13. SUM, AVERAGE, COUNT
+14. IF, AND, OR
+15. Nested IF
+16. VLOOKUP & HLOOKUP
+17. INDEX & MATCH
+18. Data Validation
+19. Drop-down Lists
+20. Protecting Worksheets
+21. Macros Basics
+22. Automating Tasks
+23. Goal Seek & Solver
+24. What-If Analysis
+25. TEXT Functions
+26. CONCATENATE & TEXTJOIN
+27. DATE & TIME Functions
+28. Lookup & Reference Functions
+29. Error Handling Functions
+30. Financial Formulas
+31. Creating Dashboards
+32. Sparklines Usage
+33. Charts Formatting
+34. Advanced Pivot Features
+35. Importing & Exporting Data
+36. Tips & Shortcuts
+37. Practical Examples
+38. Data Analysis Techniques
+39. Dynamic Charts
+40. Excel Project Examples`,
+
+"Basic Computer":`1. Introduction to Computers
+2. Computer Hardware Overview
+3. CPU, RAM, Storage
+4. Input Devices: Keyboard, Mouse
+5. Output Devices: Monitor, Printer
+6. Operating System Basics
+7. Windows OS Interface
+8. Creating Folders & Files
+9. File Management
+10. Desktop Shortcuts
+11. Control Panel Overview
+12. System Settings
+13. Installing Software
+14. Uninstalling Programs
+15. Antivirus Basics
+16. Internet Introduction
+17. Web Browsers
+18. Search Engines
+19. Downloading Files
+20. Uploading Files
+21. Email Setup
+22. Sending & Receiving Emails
+23. Gmail Interface
+24. Email Attachments
+25. Security Tips
+26. Keyboard Shortcuts
+27. Basic Troubleshooting
+28. Task Manager Usage
+29. System Restore
+30. Backup & Restore Data
+31. Cloud Storage Basics
+32. USB & External Drives
+33. Printers & Scanners
+34. Presentation Basics
+35. MS Word Basics
+36. MS PowerPoint Basics
+37. MS Excel Basics
+38. Video Conferencing Tools
+39. Online Collaboration Tools
+40. Practical Exercises`,
+
+"Advance Excel":`1. Advanced Formulas Overview
+2. Nested IF, SUMIF, COUNTIF
+3. VLOOKUP & HLOOKUP Advanced
+4. INDEX & MATCH Advanced
+5. Array Formulas
+6. Pivot Table Advanced
+7. Pivot Chart Advanced
+8. Slicers & Timelines
+9. Conditional Formatting Advanced
+10. Data Validation Advanced
+11. Macros Recording
+12. VBA Basics
+13. Automating Tasks
+14. Dashboard Creation
+15. Dynamic Charts
+16. Forecasting Data
+17. Trend Analysis
+18. What-If Analysis
+19. Goal Seek
+20. Solver Tool
+21. Data Consolidation
+22. Power Query Basics
+23. Power Pivot Overview
+24. Importing External Data
+25. Exporting Reports
+26. Custom Views
+27. Protecting Data
+28. Advanced Shortcuts
+29. Scenario Manager
+30. Statistical Formulas
+31. TEXT & DATE Formulas
+32. Lookup & Reference Formulas
+33. Error Handling Formulas
+34. Dynamic Named Ranges
+35. Table Formatting
+36. Custom Charts
+37. KPI Dashboards
+38. Sparklines & Mini Charts
+39. Reporting Templates
+40. Real World Project Examples`,
+
+"SQL":`1. Introduction to Databases
+2. Relational Database Concepts
+3. Tables, Rows, Columns
+4. Primary & Foreign Keys
+5. SELECT Statements
+6. Filtering Data with WHERE
+7. Logical Operators
+8. ORDER BY & GROUP BY
+9. Aggregate Functions
+10. AVG, MIN, MAX
+11. JOINs: INNER, LEFT, RIGHT
+12. FULL OUTER JOIN
+13. UNION & UNION ALL
+14. Subqueries
+15. Nested Queries
+16. INSERT INTO
+17. UPDATE Statements
+18. DELETE Statements
+19. Transactions Basics
+20. COMMIT & ROLLBACK
+21. Indexes
+22. Views Creation
+23. Stored Procedures
+24. Triggers Overview
+25. Functions in SQL
+26. Constraints
+27. Normalization
+28. Denormalization
+29. Data Types
+30. Database Design
+31. ER Diagrams
+32. Relationships
+33. SQL Injection & Security
+34. Performance Optimization
+35. Backup & Restore
+36. Import & Export Data
+37. CTE (Common Table Expressions)
+38. Window Functions
+39. JSON Support
+40. Practical Projects`,
+
+"Python":`1. Introduction to Python
+2. Installation & Setup
+3. IDEs & Editors
+4. Python Syntax
+5. Variables & Data Types
+6. Operators
+7. Input/Output
+8. Conditional Statements
+9. Loops: for, while
+10. Functions Basics
+11. Function Parameters
+12. Return Statements
+13. Modules & Packages
+14. Libraries Usage
+15. Lists
+16. Tuples
+17. Dictionaries
+18. Sets
+19. Strings Handling
+20. File Operations
+21. Exception Handling
+22. Classes & Objects
+23. Inheritance
+24. Polymorphism
+25. Encapsulation
+26. Decorators
+27. Lambda Functions
+28. Map, Filter, Reduce
+29. Generators
+30. Iterators
+31. Regular Expressions
+32. Date & Time Modules
+33. JSON Handling
+34. Web Scraping Basics
+35. API Calls
+36. GUI with Tkinter
+37. Matplotlib Basics
+38. Pandas Basics
+39. Numpy Basics
+40. Real World Projects`,
+
+"HTML CSS JS":`1. HTML Introduction
+2. HTML Structure
+3. Tags & Attributes
+4. Headings, Paragraphs
+5. Links & Anchors
+6. Images & Media
+7. Lists: Ordered & Unordered
+8. Tables
+9. Forms
+10. Input Types
+11. Semantic Tags
+12. HTML5 Features
+13. CSS Introduction
+14. CSS Selectors
+15. Classes & IDs
+16. Styling Text
+17. Backgrounds & Borders
+18. Box Model
+19. Positioning
+20. Flexbox
+21. Grid
+22. Responsive Design
+23. Media Queries
+24. Transitions
+25. Animations
+26. CSS Pseudo-classes
+27. CSS Pseudo-elements
+28. CSS Variables
+29. JavaScript Introduction
+30. Variables & Data Types
+31. Functions
+32. Conditional Statements
+33. Loops
+34. DOM Manipulation
+35. Events
+36. Arrays
+37. Objects
+38. Fetch API
+39. LocalStorage & SessionStorage
+40. Projects & Examples`
+};
+
+function openModal(course){
+document.getElementById("courseText").innerText = courseData[course] || "Course content coming soon!";
+document.getElementById("courseModal").style.display="flex";
+}
+
+function closeModal(){
+document.getElementById("courseModal").style.display="none";
+}
+</script>
+
+</body>
+</html>
